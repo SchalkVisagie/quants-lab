@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  bitmart_download_order_book_and_trades:
+    image: hummingbot/hummingbot:latest
+    volumes:
+      - ./scripts:/home/hummingbot/scripts
+      - ./conf:/home/hummingbot/conf
+      - ./data/order_book:home/hummingbot/data
+    environment:
+      - CONFIG_PASSWORD=a
+      - CONFIG_FILE_NAME=download_order_book_and_trades.py
+      - EXCHANGE=bitmart_paper_trade
+      - TRADING_PAIRS=LINK-USDT
+
+    build: .
+    # env_file:
+    #  - .env
+    network_mode: host
+    command: conda run --no-capture-output -n quants-lab python3 run_tasks.py --config ${TASK_CONFIG:-config/tasks.yml}
+    deploy:
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200m"
+        max-file: "10"

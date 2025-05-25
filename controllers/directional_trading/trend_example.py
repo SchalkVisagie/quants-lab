@@ -6,11 +6,11 @@ from hummingbot.strategy_v2.controllers.directional_trading_controller_base impo
     DirectionalTradingControllerBase,
     DirectionalTradingControllerConfigBase,
 )
-from pydantic import Field, field_validator
+from pydantic import Field, ValidationInfo, field_validator
 
 
 class TrendExampleControllerConfig(DirectionalTradingControllerConfigBase):
-    controller_name = "trend_example"
+    controller_name: str = "trend_example"
     candles_config: List[CandlesConfig] = []
     candles_connector: str = Field(default=None)
     candles_trading_pair: str = Field(default=None)

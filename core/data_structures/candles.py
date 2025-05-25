@@ -39,7 +39,8 @@ class Candles(DataStructureBase):
                               low=self.data['low'],
                               close=self.data['close'],
                               name="Candlesticks",
-                              increasing_line_color='#2ECC71', decreasing_line_color='#E74C3C')
+                              increasing_line_color='#2ECC71', 
+                              decreasing_line_color='#E74C3C')
 
     def candles_fig(self, height=600, width=1200):
         fig = go.Figure(data=self.candles_trace())

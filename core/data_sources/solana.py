@@ -1,6 +1,6 @@
 import os
 from solana.rpc.async_api import AsyncClient
-from solana. import PublicKey
+from solana import PublicKey
 from solana.rpc.types import MemcmpOpts
 from typing import List, Dict
 import asyncio
