@@ -15,7 +15,15 @@ build:
 run-db:
 	docker compose -f docker-compose-db.yml up -d
 
-# Stop db containers
+# Run db containers
+build-datac:
+	docker compose -f docker-compose-hbot.yml up -d --build
+
+# down datac containers
+down-datac:
+	docker compose -f docker-compose-hbot.yml down
+
+# Stop db containerss
 stop-db:
 	docker compose -f docker-compose-db.yml down
 
