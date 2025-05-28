@@ -12,11 +12,39 @@ services:
       - ./scripts:/home/hummingbot/scripts
       - ./controllers:/home/hummingbot/controllers
     environment:
-      - testnet=false
       - CONFIG_PASSWORD=a
       - CONFIG_FILE_NAME=download_order_book_and_trades.py
+      # - CONFIG_FILE_NAME=li_market_making_strategy.py
       - EXCHANGE=binance
       - TRADING_PAIRS=LINK-USDT
+      - DEPTH=25
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    tty: true
+    stdin_open: true
+    network_mode: host
+
+  okx_download_order_book_and_trades:
+    image: my-hummingbot:latest
+    volumes:
+      - ./data/order_book:/home/hummingbot/data
+      - ./conf:/home/hummingbot/conf
+      - ./conf/connectors:/home/hummingbot/conf/connectors
+      - ./conf/strategies:/home/hummingbot/conf/strategies
+      - ./conf/controllers:/home/hummingbot/conf/controllers
+      - ./conf/scripts:/home/hummingbot/conf/scripts
+      - ./scripts:/home/hummingbot/scripts
+      - ./controllers:/home/hummingbot/controllers
+    environment:
+      - CONFIG_PASSWORD=a
+      - CONFIG_FILE_NAME=download_order_book_and_trades.py
+      - EXCHANGE=okx
+      - TRADING_PAIRS=LINK-USDT
+      - DEPTH=25
 
     logging:
       driver: "json-file"
