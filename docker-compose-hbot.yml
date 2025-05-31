@@ -16,8 +16,8 @@ services:
       - CONFIG_FILE_NAME=download_order_book_and_trades.py
       # - CONFIG_FILE_NAME=li_market_making_strategy.py
       - EXCHANGE=binance
-      - TRADING_PAIRS=LINK-USDT
-      - DEPTH=25
+      - TRADING_PAIRS=POL-USDT
+      - DEPTH=20
 
     logging:
       driver: "json-file"
