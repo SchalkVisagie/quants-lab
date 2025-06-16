@@ -1,7 +1,6 @@
 import os
 import sys
 from decimal import Decimal
-from theOne import theOne
 import pandas as pd
 import numpy as np
 from core.data_sources.clob import CLOBDataSource
